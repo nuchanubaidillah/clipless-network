@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clipless Network — Official Channels Hub</title>
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --border-color: #e2e8f0;
+      --accent-gold: #d97706;
+      --accent-gold-bg: #fef3c7;
+      --pill-bg: #f1f5f9;
+      --pill-active-bg: #0f172a;
+      --pill-active-text: #ffffff;
+      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      --btn-yt: #ef4444;
+      --btn-tt: #0f172a;
+      --btn-ig: #db2777;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #0b0f19;
+      --card-bg: #131a2a;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --border-color: #1e293b;
+      --accent-gold: #f59e0b;
+      --accent-gold-bg: rgba(245, 158, 11, 0.15);
+      --pill-bg: #1e293b;
+      --pill-active-bg: #f59e0b;
+      --pill-active-text: #0b0f19;
+      --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      --btn-tt: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      transition: background-color 0.25s ease, color 0.25s ease;
+      padding: 24px 16px 48px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+    }
+
+    /* Header & Theme Toggle */
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8px;
+    }
+
+    .theme-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .brand-logo-main {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #f59e0b;
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.25);
+      background-color: #0b0f19;
+    }
+
+    .profile-header h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+
+    .profile-header p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Filter Tabs */
+    .filters {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .filter-pill {
+      background: var(--pill-bg);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-pill.active {
+      background: var(--pill-active-bg);
+      color: var(--pill-active-text);
+      border-color: var(--pill-active-bg);
+    }
+
+    /* Channel Cards */
+    .channel-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .channel-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease;
+    }
+
+    .channel-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .channel-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--border-color);
+      background-color: #0b0f19;
+    }
+
+    .channel-info h2 {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag-main {
+      font-size: 10px;
+      background: var(--accent-gold-bg);
+      color: var(--accent-gold);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .channel-info p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+
+    /* Social Links Row */
+    .social-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .social-links.two-cols {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .social-btn {
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 10px;
+      border-radius: 10px;
+      text-align: center;
+      color: #ffffff;
+      transition: opacity 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .social-btn:hover {
+      opacity: 0.9;
+    }
+
+    .btn-yt { background-color: var(--btn-yt); }
+    .btn-tt { background-color: var(--btn-tt); }
+    .btn-ig { background-color: var(--btn-ig); }
+
+    footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <button class="theme-btn" id="themeToggle" aria-label="Ganti Tema">
+        <span id="themeIcon">🌙</span> <span id="themeLabel">Mode Gelap</span>
+      </button>
+    </div>
+
+    <header class="profile-header">
+      <img src="Clipless Final.png" alt="Clipless Network" class="brand-logo-main" />
+      <h1>CLIPLESS NETWORK</h1>
+      <p>Satu jaringan media pendek untuk edukasi, hikmah, psikologi, dan hiburan harian pilihan.</p>
+    </header>
+
+    <div class="filters" id="filterContainer">
+      <button class="filter-pill active" data-filter="all">Semua (7)</button>
+      <button class="filter-pill" data-filter="edukasi">Edukasi & Ilmu</button>
+      <button class="filter-pill" data-filter="hiburan">Komedi & Hiburan</button>
+    </div>
+
+    <main class="channel-list" id="channelList">
+      <!-- 1. Clipless Main -->
+      <article class="channel-card" data-category="hiburan">
+        <div class="card-top">
+          <img src="Clipless Final.png" alt="Logo Clipless" class="channel-logo" />
+          <div class="channel-info">
+            <h2>Clipless <span class="tag-main">Main</span></h2>
+            <p>Global stand-up comedy clips & viral storytelling moments.</p>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://youtube.com/@clipless" target="_blank" rel="noopener" class="social-btn btn-yt">▶ YouTube</a>
+          <a href="https://tiktok.com/@clipless" target="_blank" rel="noopener" class="social-btn btn-tt">♪ TikTok</a>
+          <a href="https://instagram.com/clipless" target="_blank" rel="noopener" class="social-btn btn-ig">◎ Instagram</a>
+        </div>
+      </article>
+
+      <!-- 2. Clipless Edu -->
+      <article class="channel-card" data-category="edukasi">
+        <div class="card-top">
+          <img src="Clipless Edu Final.png" alt="Logo Clipless Edu" class="channel-logo" />
+          <div class="channel-info">
+            <h2>Clipless Edu</h2>
+            <p>Belajar asyik: fakta sains, dunia & pengetahuan umum dalam 60 detik.</p>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://youtube.com/@cliplessedu" target="_blank" rel="noopener" class="social-btn btn-yt">▶ YouTube</a>
+          <a href="https://tiktok.com/@cliplessedu" target="_blank" rel="noopener" class="social-btn btn-tt">♪ TikTok</a>
+          <a href="https://instagram.com/cliplessedu" target="_blank" rel="noopener" class="social-btn btn-ig">◎ Instagram</a>
+        </div>
+      </article>
+
+      <!-- 3. Clipless Hikmah -->
+      <article class="channel-card" data-category="edukasi">
+        <div class="card-top">
+          <img src="Clipless Hikmah Final.png" alt="Logo Clipless Hikmah" class="channel-logo" />
+          <div class="channel-info">
+            <h2>Clipless Hikmah</h2>
+            <p>Kisah inspiratif, adab sehari-hari & pengingat kebaikan.</p>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://youtube.com/@cliplesshikmah" target="_blank" rel="noopener" class="social-btn btn-yt">▶ YouTube</a>
+          <a href="https://tiktok.com/@cliplesshikmah" target="_blank" rel="noopener" class="social-btn btn-tt">♪ TikTok</a>
+          <a href="https://instagram.com/cliplesshikmah" target="_blank" rel="noopener" class="social-btn btn-ig">◎ Instagram</a>
+        </div>
+      </article>
+
+      <!-- 4. Clipless Psikologi -->
+      <article class="channel-card" data-category="edukasi">
+        <div class="card-top">
+          <img src="Clipless Psikologi Final.png" alt="Logo Clipless Psikologi" class="channel-logo" />
+          <div class="channel-info">
+            <h2>Clipless Psikologi</h2>
+            <p>Memahami pola pikir, kebiasaan & perilaku manusia setiap hari.</p>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://youtube.com/@cliplesspsikologi" target="_blank" rel="noopener" class="social-btn btn-yt">▶ YouTube</a>
+          <a href="https://tiktok.com/@cliplesspsikologi" target="_blank" rel="noopener" class="social-btn btn-tt">♪ TikTok</a>
+          <a href="https://instagram.com/cliplesspsikologi" target="_blank" rel="noopener" class="social-btn btn-ig">◎ Instagram</a>
+        </div>
+      </article>
+
+      <!-- 5. Clipless Stand Up -->
+      <article class="channel-card" data-category="hiburan">
+        <div class="card-top">
+          <img src="Clipless Stand Up Final.png" alt="Logo Clipless Stand Up" class="channel-logo" />
+          <div class="channel-info">
+            <h2>Clipless Stand Up</h2>
+            <p>Kumpulan bit & momen pecah stand-up comedy Indonesia.</p>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://youtube.com/@cliplessstandup" target="_blank" rel="noopener" class="social-btn btn-yt">▶ YouTube</a>
+          <a href="https://tiktok.com/@cliplessstandup" target="_blank" rel="noopener" class="social-btn btn-tt">♪ TikTok</a>
+          <a href="https://instagram.com/cliplessstandup" target="_blank" rel="noopener" class="social-btn btn-ig">◎ Instagram</a>
+        </div>
+      </article>
+
+      <!-- 6. Clipless Indonesia -->
+      <article class="channel-card" data-category="hiburan">
+        <div class="card-top">
+          <img src="Clipless Indonesia Final.png" alt="Logo Clipless Indonesia" class="channel-logo" />
+          <div class="channel-info">
+            <h2>Clipless Indonesia</h2>
+            <p>Potongan obrolan seru, perspektif & podcast pilihan Indonesia.</p>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://youtube.com/@cliplessindonesia" target="_blank" rel="noopener" class="social-btn btn-yt">▶ YouTube</a>
+          <a href="https://tiktok.com/@cliplessindonesia" target="_blank" rel="noopener" class="social-btn btn-tt">♪ TikTok</a>
+          <a href="https://instagram.com/cliplessindonesia" target="_blank" rel="noopener" class="social-btn btn-ig">◎ Instagram</a>
+        </div>
+      </article>
+
+      <!-- 7. Clipless Drama -->
+      <article class="channel-card" data-category="hiburan">
+        <div class="card-top">
+          <img src="Clipless Drama Final.png" alt="Logo Clipless Drama" class="channel-logo" />
+          <div class="channel-info">
+            <h2>Clipless Drama</h2>
+            <p>Cuplikan kisah cinta, konflik & alur drama pendek pilihan.</p>
+          </div>
+        </div>
+        <div class="social-links two-cols">
+          <a href="https://tiktok.com/@cliplessdrama" target="_blank" rel="noopener" class="social-btn btn-tt">♪ TikTok</a>
+          <a href="https://instagram.com/cliplessdrama" target="_blank" rel="noopener" class="social-btn btn-ig">◎ Instagram</a>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      © 2026 Clipless Network. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeLabel = document.getElementById("themeLabel");
+    const htmlEl = document.documentElement;
+
+    themeToggle.addEventListener("click", () => {
+      const isLight = htmlEl.getAttribute("data-theme") === "light";
+      const nextTheme = isLight ? "dark" : "light";
+      htmlEl.setAttribute("data-theme", nextTheme);
+      themeIcon.textContent = nextTheme === "light" ? "🌙" : "☀️";
+      themeLabel.textContent = nextTheme === "light" ? "Mode Gelap" : "Mode Terang";
+    });
+
+    // Category Filter
+    const filterButtons = document.querySelectorAll(".filter-pill");
+    const cards = document.querySelectorAll(".channel-card");
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filter = btn.getAttribute("data-filter");
+        cards.forEach((card) => {
+          if (filter === "all" || card.getAttribute("data-category") === filter) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
